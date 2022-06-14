@@ -1,10 +1,8 @@
 .App {
   padding: 1rem;
-}
-
-main {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-gap: 1rem;
 }
 
 .cta-button {
@@ -21,7 +19,7 @@ main {
 }
 
 .connect-wallet-button {
-  background-color: -webkit-linear-gradient(left, #60c657, #35aee2);
+  background: -webkit-linear-gradient(left, #60c657, #35aee2);
   background-size: 200% 200%;
   animation: gradient-animation 4s ease infinite;
 }

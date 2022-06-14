@@ -1,0 +1,31 @@
+.GifForm {
+  display: grid;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 1rem;
+  grid-template-columns: 10fr 1fr;
+}
+
+.field[type='text'] {
+  display: inline-block;
+  color: white;
+  padding: 10px;
+  width: 50%;
+  height: 60px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 10px;
+}
+
+.btnSubmit {
+  background: -webkit-linear-gradient(left, #4e44ce, #35aee2);
+  background-size: 200% 200%;
+  animation: gradient-animation 4s ease infinite;
+  margin-left: 10px;
+}
+
+.btn {
+  height: 50px;
+}

@@ -1,0 +1,11 @@
+.List {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 1rem;
+}
+
+.itemImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}

@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import List from './List/List';
+import items from './dummies/gifList';
+import GifForm from './GifForm';
+import { getWalletAddress } from './appFns';
 
 function App() {
   const [ walletAddress, setWalletAddress ] = useState('');
+  const [list, setList] = useState(items);
 
   useEffect(() => {
     const onLoad = async () => setWalletAddress(await getWalletAddress(window.solana));
@@ -20,44 +25,33 @@ function App() {
     }
   }
 
+  function sendGif(value) {
+    if(value.length > 0) {
+      setList(prev => [...prev, value]);
+    } else {
+      console.log('Empty input, no link');
+    }
+  }
+
   return (
     <div className="App">
       <header className="">
         <h1>My first dapp with Solana</h1>
-      </header>
-      <main>
         {!walletAddress && <button className='cta-button connect-wallet-button' onClick={connectWallet}>Connect to wallet</button>}
-
-        {walletAddress && `Your Address: ${walletAddress}`}
-      </main>
+      </header>
+      {
+        walletAddress && <main>
+          <GifForm
+            onSubmit={(value) => {
+              sendGif(value)
+            }}
+          ></GifForm>
+          <List items={list}></List>
+        </main>
+      }
       <footer></footer>
     </div>
   );
-}
-
-async function getWalletAddress(solana) {
-  try {
-    if(hasSolanaWallet()) {
-      const response = await solana.connect({ onlyIfTrusted: true });
-      console.log('Connected with Public Key:', response.publicKey.toString());
-      return response.publicKey.toString();
-    }
-
-    return '';
-  } catch(err) {
-    console.error(err);
-    return '';
-  }
-}
-
-async function hasSolanaWallet() {
-  const { solana } = window;
-
-  if (solana?.isPhantom) {
-    return true;
-  } else {
-   return false;
-  }
 }
 
 export default App;
