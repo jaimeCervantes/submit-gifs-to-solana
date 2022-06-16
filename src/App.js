@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import List from './List/List';
 import GifForm from './GifForm';
-import { connectToSolana, getWalletAddress, createGifAccount, getGifList, addGif } from './appFns';
+import { connectToSolana, getWalletAddress, getGifList, addGif } from './appFns';
 import './App.css';
 import { Buffer } from 'buffer';
 window.Buffer = Buffer
